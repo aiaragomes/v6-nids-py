@@ -20,7 +20,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/aiaragomes/v6-nids-py',
     packages=find_packages(),
-    python_requires='>=3.10',
+    python_requires='>=3.7',
     install_requires=[
         'vantage6-client'
     ]
