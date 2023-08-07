@@ -18,7 +18,7 @@ import pandas
 from vantage6.tools.util import info, warn
 
 
-def master(client, data):
+def master(client, data, org_ids=None):
     """Master algorithm.
 
     The master algorithm is the chair of the Round Robin, which makes
@@ -30,7 +30,8 @@ def master(client, data):
     # as this is encoded in the JWT (Bearer token)
     info('Collecting participating organizations')
     organizations = client.get_organizations_in_my_collaboration()
-    ids = [organization.get('id') for organization in organizations]
+    ids = [organization.get('id') for organization in organizations \
+           if not org_ids or organization.get('id') in org_ids]
 
     # The input for the algorithm is the same for all organizations
     # in this case

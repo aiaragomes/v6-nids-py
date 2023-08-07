@@ -1,5 +1,6 @@
 # Basic python3 image as base
-FROM harbor2.vantage6.ai/algorithms/algorithm-base
+FROM harbor2.vantage6.ai/infrastructure/algorithm-base:3.4.2
+
 
 # This is a placeholder that should be overloaded by invoking
 # docker build with '--build-arg PKG_NAME=...'
@@ -10,7 +11,7 @@ RUN apt-get install -y apt-utils gcc libpq-dev wget iputils-ping
 
 # Install federated algorithm
 COPY . /app
-RUN pip install --no-cache-dir /app
+RUN pip install /app
 
 # Tell docker to execute `docker_wrapper()` when the image is run.
 ENV PKG_NAME=${PKG_NAME}

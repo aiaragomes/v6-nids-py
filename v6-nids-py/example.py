@@ -31,8 +31,8 @@ print(results)
 
 # Check master method
 master_task = client.create_new_task(
-    input_={'master': 1, 'method': 'master'},
-    organization_ids=ids
+    input_={'master': 1, 'method': 'master', 'kwargs': {'org_ids': [1]}},
+    organization_ids=[1]
 )
 results = client.get_results(master_task.get('id'))
 print(results)
